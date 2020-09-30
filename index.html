@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PWA - Photos</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="src/css/main.css">
+	</head>
+	<body>
+
+    <div class="app">
+      <div class="inputs">
+        <input type="file" id="imgFile" capture accept="image/*">
+        <input type="text" id="imgName">
+        <button id="imgBtnSave"> Salvar Imagem </button>
+      </div>
+      <div class="imgs">
+        <ul></ul>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/dbindexed@1.0.1/index.min.js"></script>
+    <script type="module" src="src/js/app.js"></script>
+	</body>
+</html>
