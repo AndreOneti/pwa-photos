@@ -10,6 +10,13 @@ export default class HtmlService {
     this.getAllPhotos();
     document.querySelector('#imgFile').addEventListener('change', e => this.doFile(e));
     document.querySelector('#imgBtnSave').addEventListener('click', () => this.saveImg());
+    document.querySelector("#imgName").addEventListener('keyup', (key) => {
+      if (key.key === "Enter") this.saveImg();
+    });
+    document.addEventListener('contextmenu', function (ev) {
+      ev.preventDefault();
+      console.log(ev);
+    }, false);
   }
 
   async doFile(e) {
@@ -50,12 +57,49 @@ export default class HtmlService {
     image.src = 'data:image/jpeg;base64,' + btoa(photo.data);
   }
 
+  async delete(e) {
+    let id = e.target.parentElement.key;
+    await this.photosService.delete(id);
+    e.target.parentElement.remove();
+  }
+
   async getAllPhotos() {
     let imgs = await this.photosService.getAll();
-    let ul = document.querySelector('ul');
-    const creteLi = (acc, img) => acc +=
-      `<li class="li-card"><img class="card" src=${'data:image/jpeg;base64,' + btoa(img.data)}></img><h4 class="li-desc"><span>${img.name}</span></h4></li>`;
-    let lis = imgs.reduce(creteLi, '');
-    ul.innerHTML = lis;
+    let imgcomponent = document.querySelector('.imgs');
+    imgcomponent.innerHTML = '';
+    imgs.forEach(img => {
+      let figure = document.createElement('figure');
+      figure.classList.add("fig-card");
+      figure.key = img.id;
+      let image = document.createElement('img');
+      image.src = 'data:image/jpeg;base64,' + btoa(img.data);
+      let figCap = document.createElement('figcaption');
+
+      let descSpan = document.createElement('span');
+      descSpan.classList.add("description");
+      descSpan.innerText = img.name;
+
+      let delSpan = document.createElement('span');
+      delSpan.classList.add("delete");
+      delSpan.innerText = " X ";
+      delSpan.addEventListener('click', e => this.delete(e));
+
+      figCap.append(descSpan);
+      figure.append(image);
+      figure.append(figCap);
+      figure.append(delSpan);
+      imgcomponent.append(figure);
+    });
+
+    // const creteLi = (acc, img) => acc +=
+    //   `<figure class="fig-card">\
+    //     <img src="${'data:image/jpeg;base64,' + btoa(img.data)}" />\
+    //     <figcaption>\
+    //       <span class="description">${img.name}</span>\
+    //     </figcaption>\
+    //     <span class="delete"> X </span>\
+    //   </figure>`;
+    // let lis = imgs.reduce(creteLi, '');
+    // imgcomponent.innerHTML = lis;
   }
 }

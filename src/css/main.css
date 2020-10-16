@@ -1,37 +1,83 @@
 * {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
   font-family: Roboto, sans-serif;
 }
 
-.app {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex: 1;
+.main {
+  width: 99%;
+  margin: 0 auto;
 }
 
 .inputs {
-  margin-top: 50px;
-  padding: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 5px;
+  margin: 6px;
+}
+
+.header {
+  margin: 10px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
 }
 
 .imgs {
-  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 5px;
 }
 
-.card{
-  height: 200px;
-  width: 200px;
+main {
+  height: 80%;
+  width: 80%;
 }
 
-.li-card {
+.fig-card {
+  height: 100%;
+  width: 100%;
+  margin: 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
-.li-desc {
-  margin-top: 10px;
-  padding: 3px;
+img {
+  height: 90%;
+  width: 90%;
+}
+
+.delete {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  font-size: 1em;
+  font-weight: bold;
+  color: red;
+  cursor: pointer;
+  top: 0;
+  right: 0;
+  margin-right: 25px;
+  margin-top: 8px;
+  z-index: 9;
+}
+
+.description {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 850px) {
+  .imgs {
+    grid-template-columns: 1fr;
+  }
+
+  .inputs {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
 }

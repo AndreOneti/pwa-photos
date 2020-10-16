@@ -6,20 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PWA - Photos</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link rel="shortcut icon" href="src/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="src/css/main.css">
+    <link rel="manifest" href="manifest.json">
 	</head>
 	<body>
 
-    <div class="app">
-      <div class="inputs">
-        <input type="file" id="imgFile" capture accept="image/*">
-        <input type="text" id="imgName">
-        <button id="imgBtnSave"> Salvar Imagem </button>
-      </div>
-      <div class="imgs">
-        <ul></ul>
-      </div>
+    <div class="header">
+      <h1>Selecione suas fotos</h1>
     </div>
+
+    <main class="main">
+      <div class="app">
+
+        <div class="inputs">
+          <input type="file" id="imgFile" accept="image/*">
+          <div class="txt-btn">
+            <input type="text" id="imgName" maxlength="30">
+            <button id="imgBtnSave"> Salvar Imagem </button>
+          </div>
+        </div>
+
+        <div class="imgs">
+        </div>
+
+      </div>
+    </main>
 
     <script src="https://unpkg.com/dbindexed@1.0.1/index.min.js"></script>
     <script type="module" src="src/js/app.js"></script>

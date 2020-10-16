@@ -6,6 +6,7 @@ const assetsToCache = [
   'https://unpkg.com/dbindexed@1.0.1/index.min.js',
   './src/js/PhotosService.js',
   './src/js/HtmlService.js',
+  './src/img/favicon.ico',
   './src/css/main.css',
   './src/js/app.js',
   './'
